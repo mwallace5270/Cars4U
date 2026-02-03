@@ -1,4 +1,6 @@
 <?php
+session_start(); // Start the session to store login state
+
 $servername = "localhost";
 $username = "root";
 $password = "root"; // Default MAMP MySQL password
@@ -31,7 +33,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->bind_param("ssssss", $email, $password, $first_name, $last_name, $zip, $mobile);
 
     if ($stmt->execute()) {
-        echo "Registration successful!";
+        // Store user session data (you can retrieve the inserted ID if needed)
+        $_SESSION['user_email'] = $email;
+        $_SESSION['user_id'] = $stmt->insert_id;
+
+        // Redirect to home
+        header("Location: home.html");
+        exit();
     } else {
         echo "Error: " . $stmt->error;
     }
@@ -41,4 +49,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 $conn->close();
 ?>
-

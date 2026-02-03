@@ -22,8 +22,8 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url('background.png'); /* local image file may not show when turned in */
-            background-size: 100% 80%;
+            background-image: url('Images/background.png'); 
+            background-size: 100% 100%;
             background-position: center auto;
             background-repeat: no-repeat;
             z-index: -2;
@@ -117,31 +117,41 @@
         } 
         .form-group {
         margin-bottom: 20px;
+        } 
+        .signup-link {
+        color: #007bff;
+        text-decoration: none;
+        }
+
+        .signup-link:hover {
+        text-decoration: underline;
         }
     </style>
 </head>
 <body>
     <div class="login-container">
-        <h2>SIGN IN</h2>
-        <div class="welcome-text">
-            HEY THERE, WELCOME BACK<br>
-            Don’t have a Cars4U Account? <a href="#">Create one here</a>
-        </div>
-    <form action="login.php" method="POST">
+      <h2>SIGN IN</h2>
+      <div class="welcome-text">
+        HEY THERE, WELCOME BACK<br>
+        Don’t have a Cars4U Account? <a href="index.html" class="signup-link">Create one here</a>
+      </div>
+      <form action="login.php" method="POST">
         <div class="form-group">
-            <label for="email">EMAIL</label>
-            <input type="email" id="email" name="email" required>
+          <label for="email">EMAIL</label>
+          <input type="email" id="email" name="email" required>
         </div>
-    
+  
         <div class="form-group">
-            <label for="password">PASSWORD</label>
-            <input type="password" id="password" name="password" required>
+          <label for="password">PASSWORD</label>
+          <input type="password" id="password" name="password" required>
         </div>
-    
+  
         <div class="forgot-password">
-            <a href="#">I forgot my password</a>
+          <a href="#">I forgot my password</a>
         </div>
-    
+  
         <button type="submit">SIGN IN</button>
-    </form>
-    
+      </form>
+    </div>
+  </body>
+  </html>  

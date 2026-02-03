@@ -3,7 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Cars4U - Find Your Car</title>
+  <title>Cars4U - Find Your Car</title> 
+  <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+  />
   <style>
     :root {
       --dark: #1a1a1a;
@@ -37,7 +41,6 @@
       padding: 20px 0;
       border-bottom: 1px solid #ccc;
       display: flex;
-      flex-wrap: wrap;
       justify-content: space-between;
       align-items: center;
     }
@@ -46,6 +49,13 @@
       font-size: 1.8rem;
       font-weight: bold;
       color: var(--accent);
+      display: flex;
+      align-items: center;
+    }
+
+    .logo img {
+      height: 40px;
+      margin-right: 10px;
     }
 
     .header-info {
@@ -59,23 +69,33 @@
     .header-info a {
       color: var(--dark);
       text-decoration: underline;
+      margin-left: 5px;
     }
 
     .nav {
-      margin-top: 10px;
       display: flex;
       gap: 15px;
-      flex-wrap: wrap;
+      align-items: center;
     }
 
     .nav a {
       text-decoration: none;
       color: var(--dark);
       font-weight: 500;
+      display: flex;
+      align-items: center;
+    }
+
+    .profile-img {
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      margin-left: 10px;
+      object-fit: cover;
     }
 
     .search-banner {
-      background: url('BACKGROUND_IMAGE') center/cover no-repeat;
+      background: url('Images/homepage-background.png') center/cover no-repeat;
       color: var(--dark);
       padding: 60px 0;
       text-align: center;
@@ -172,7 +192,7 @@
 
     .car-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 20px;
     }
 
@@ -181,16 +201,22 @@
       border-radius: 10px;
       overflow: hidden;
       box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      padding: 20px;
+      transition: transform 0.3s ease;
+    }
+
+    .car-card:hover {
+      transform: translateY(-5px);
     }
 
     .car-card img {
-      width: 100%;
-      height: 160px;
-      object-fit: cover;
+      width: 100px;
+      height: auto;
+      object-fit: contain;
+      margin-bottom: 10px;
     }
 
     .car-card h3 {
-      padding: 15px;
       font-size: 1.1rem;
       color: var(--dark);
     }
@@ -233,75 +259,78 @@
 <body>
 
   <!-- Header -->
-  <header class="header container">
-    <div class="logo"><i class="fas fa-car-side"></i> Cars4U</div>
-    <div class="header-info">
-      <div><i class="fas fa-map-marker-alt"></i> Baltimore, MD <a href="#">Change Location</a></div>
-      <div><i class="fas fa-phone"></i> 999-999-9999</div>
+  <header class="header">
+    <div class="container">
+      <div class="logo">
+        <img src="Images/cars4ulogo-icon.png" alt="Cars4U Logo">
+      </div>
+      <div class="header-info">
+        <div><i class="fas fa-phone"></i> 999-999-9999</div>
+        <div><i class="fas fa-map-marker-alt"></i> <a href="#">Change Location</a></div>
+      </div>
+      <nav class="nav">
+        <a href="#"><i class="fas fa-car"></i> Cars For Sale</a>
+        <a href="#"><i class="fas fa-tag"></i> Sell</a>
+        <a href="#"><i class="fas fa-info-circle"></i> About Us</a>
+        <a href="profile.php">
+          <img src="Images/profile-icon.png" alt="Profile" class="profile-img">
+        </a>        
+      </nav>
     </div>
-    <nav class="nav">
-      <a href="#"><i class="fas fa-car"></i> Cars For Sale</a>
-      <a href="#"><i class="fas fa-tag"></i> Sell</a>
-      <a href="#"><i class="fas fa-info-circle"></i> About Us</a>
-    </nav>
   </header>
 
-  <!-- Search Banner -->
-  <section class="search-banner">
-    <div class="container">
-      <h1>Find the right car 4 U.</h1>
-      <p>Search by make, model, etc.</p>
+ <!-- Search Banner -->
+<section class="search-banner">
+  <div class="container">
+    <h1>Find the right car 4 U.</h1>
+    <p>Search by make, model, etc.</p>
 
-      <div class="search-bar">
-        <select>
-          <option selected disabled>Any Make</option>
-          <option>Honda</option>
-          <option>Toyota</option>
-          <option>Ford</option>
-        </select>
-        <select>
-          <option selected disabled>Any Body Style</option>
-          <option>Sedan</option>
-          <option>SUV</option>
-          <option>Hatchback</option>
-          <option>Luxury</option>
-        </select>
-        <input type="text" placeholder="Search by keyword" />
-        <button><i class="fas fa-search"></i> Search</button>
-      </div>
+    <form action="http://localhost:8888/MWallace_FinalProject/browse_cars.php" method="get" class="search-bar">
+      <select name="make">
+        <option selected disabled>Any Make</option>
+        <option>Honda</option>
+        <option>Toyota</option>
+        <option>Ford</option>
+        <option>Hyundai</option>
+      </select>
 
-      <div class="filters">
-        <button><i class="fas fa-car-side"></i> Sedan</button>
-        <button><i class="fas fa-car"></i> SUV</button>
-        <button><i class="fas fa-car-crash"></i> Hatchback</button>
-        <button><i class="fas fa-gem"></i> Luxury</button>
-        <button><i class="fas fa-sliders-h"></i> All Filters</button>
-      </div>
+      <select name="body_style">
+        <option selected disabled>Any Body Style</option>
+        <option>Sedan</option>
+        <option>SUV</option>
+        <option>Hatchback</option>
+        <option>Luxury</option>
+      </select>
 
-      <button class="view-btn"><i class="fas fa-eye"></i> View Vehicles</button>
-    </div>
-  </section>
+      <input type="text" name="keyword" placeholder="Search by keyword" />
+
+      <button type="submit"><i class="fas fa-search"></i> Search</button>
+    </form>
+  </div>
+</section>
 
   <!-- Featured Cars -->
   <section class="car-section container">
     <h2>Browse by Style</h2>
     <div class="car-grid">
       <div class="car-card">
-        <img src="SEDAN_IMAGE" alt="Sedan">
+        <img src="Images/Sedan-image.png" alt="Sedan">
         <h3>Sedan</h3>
       </div>
       <div class="car-card">
-        <img src="SUV_IMAGE" alt="SUV">
+        <img src="Images/SUV-image.png" alt="SUV">
         <h3>SUV</h3>
       </div>
       <div class="car-card">
-        <img src="HATCHBACK_IMAGE" alt="Hatchback">
+        <img src="Images/Hatchback-image.png" alt="Hatchback">
         <h3>Hatchback</h3>
       </div>
       <div class="car-card">
-        <img src="LUXURY_IMAGE" alt="Luxury">
+        <img src="Images/LuxCar-image.png" alt="Luxury">
         <h3>Luxury</h3>
       </div>
     </div>
+  </section>
+
 </body>
 </html>
