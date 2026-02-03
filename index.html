@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cars4U Sign-Up</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('background.png'); /* local image file may not show when turned in */
+            background-size: 100% 80%;
+            background-position: center auto;
+            background-repeat: no-repeat;
+            z-index: -2;
+        }
+
+        body::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(1, 26, 94, 0.32);
+            z-index: -1;
+        }
+        .signup-container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 8px;
+            width: 400px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .signup-container h2 {
+            color: #002d72;
+            font-size: 18px;
+            margin-bottom: 10px; 
+            text-align: center;
+        }
+        .signup-container p {
+            text-align: left;
+            margin-bottom: 20px;
+        }
+        .signup-container p a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        .signup-container input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        .name-fields {
+            display: flex;
+            gap: 10px;
+        }
+        .name-fields input {
+            flex: 1;
+        }
+        .note {
+            font-size: 10px;
+            color: #666;
+            margin-top: 0px;
+            margin-bottom: 5px;
+        }
+        .signup-button {
+            background-color: #001b5d;
+            color: white;
+            border: none;
+            width: 100%;
+            padding: 14px;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .signup-button:hover {
+            background-color: #001544;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="signup-container">
+        <h2>CREATE YOUR CARS4U ACCOUNT</h2>
+        <p>Already have a Cars4U account? <a href="#">Sign In</a></p>
+        <form action="signup.php" method="POST">
+            <input type="email" name="email" placeholder="EMAIL" required>
+            <input type="password" name="password" placeholder="PASSWORD" required>
+        
+            <p class="note">Please enter your name as it appears on your driver’s license.</p>
+            
+            <div class="name-fields">
+                <input type="text" name="first_name" placeholder="FIRST NAME" required>
+                <input type="text" name="last_name" placeholder="LAST NAME" required>
+            </div>
+            
+            <input type="text" name="zip" placeholder="ZIP CODE" required>
+            <input type="text" name="mobile" placeholder="MOBILE NUMBER" required>
+            <button type="submit" class="signup-button">SIGN UP</button>
+        </form>        
+    </div>
+</body>
+</html>
+
