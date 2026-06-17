@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cars4U - Find Your Car</title> 
+  <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+  />
+  <style>
+    :root {
+      --dark: #1a1a1a;
+      --gray-dark: #666;
+      --gray-light: #eaeaea;
+      --white: #ffffff;
+      --accent: #2b2b2b;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Helvetica Neue', sans-serif;
+      background-color: var(--gray-light);
+      color: var(--dark);
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 0 20px;
+    }
+
+    .header {
+      background-color: var(--white);
+      padding: 20px 0;
+      border-bottom: 1px solid #ccc;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+    }
+
+    .logo img {
+      height: 40px;
+      margin-right: 10px;
+    }
+
+    .header-info {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      font-size: 0.9rem;
+      color: var(--gray-dark);
+    }
+
+    .header-info a {
+      color: var(--dark);
+      text-decoration: underline;
+      margin-left: 5px;
+    }
+
+    .nav {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+    }
+
+    .nav a {
+      text-decoration: none;
+      color: var(--dark);
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+    }
+
+    .profile-img {
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      margin-left: 10px;
+      object-fit: cover;
+    }
+
+    .search-banner {
+      background: url('Images/homepage-background.png') center/cover no-repeat;
+      color: var(--dark);
+      padding: 60px 0;
+      text-align: center;
+      background-color: #f2f2f2;
+    }
+
+    .search-banner h1 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+      color: var(--accent);
+    }
+
+    .search-banner p {
+      font-size: 1rem;
+      margin-bottom: 30px;
+      color: var(--gray-dark);
+    }
+
+    .search-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .search-bar select,
+    .search-bar input,
+    .search-bar button {
+      padding: 12px 14px;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      flex: 1 1 200px;
+      max-width: 250px;
+      background-color: var(--white);
+      color: var(--dark);
+    }
+
+    .search-bar button {
+      background-color: var(--accent);
+      color: white;
+      border: none;
+      cursor: pointer;
+      flex: 0 0 auto;
+    }
+
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .filters button {
+      padding: 10px 20px;
+      border: 1px solid #aaa;
+      background-color: var(--white);
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 500;
+      color: var(--accent);
+    }
+
+    .filters button i {
+      margin-right: 8px;
+    }
+
+    .filters button:hover {
+      background-color: var(--gray-light);
+    }
+
+    .search-banner > .view-btn {
+      margin-top: 10px;
+      padding: 12px 24px;
+      font-size: 1rem;
+      background-color: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .car-section {
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .car-section h2 {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+    }
+
+    .car-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+
+    .car-card {
+      background-color: var(--white);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      padding: 20px;
+      transition: transform 0.3s ease;
+    }
+
+    .car-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .car-card img {
+      width: 100px;
+      height: auto;
+      object-fit: contain;
+      margin-bottom: 10px;
+    }
+
+    .car-card h3 {
+      font-size: 1.1rem;
+      color: var(--dark);
+    }
+
+    .footer {
+      background-color: var(--accent);
+      color: #fff;
+      padding: 20px 0;
+      text-align: center;
+      font-size: 0.9rem;
+      margin-top: 40px;
+    }
+
+    @media (max-width: 768px) {
+      .header,
+      .header-info,
+      .nav {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .search-banner h1 {
+        font-size: 1.5rem;
+      }
+
+      .search-bar {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .search-bar select,
+      .search-bar input,
+      .search-bar button {
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <div class="logo">
+        <img src="Images/cars4ulogo-icon.png" alt="Cars4U Logo">
+      </div>
+      <div class="header-info">
+        <div><i class="fas fa-phone"></i> 999-999-9999</div>
+        <div><i class="fas fa-map-marker-alt"></i> <a href="#">Change Location</a></div>
+      </div>
+      <nav class="nav">
+        <a href="#"><i class="fas fa-car"></i> Cars For Sale</a>
+        <a href="#"><i class="fas fa-tag"></i> Sell</a>
+        <a href="#"><i class="fas fa-info-circle"></i> About Us</a>
+        <a href="profile.php">
+          <img src="Images/profile-icon.png" alt="Profile" class="profile-img">
+        </a>        
+      </nav>
+    </div>
+  </header>
+
+ <!-- Search Banner -->
+<section class="search-banner">
+  <div class="container">
+    <h1>Find the right car 4 U.</h1>
+    <p>Search by make, model, etc.</p>
+
+    <form action="http://localhost:8888/MWallace_FinalProject/browse_cars.php" method="get" class="search-bar">
+      <select name="make">
+        <option selected disabled>Any Make</option>
+        <option>Honda</option>
+        <option>Toyota</option>
+        <option>Ford</option>
+        <option>Hyundai</option>
+      </select>
+
+      <select name="body_style">
+        <option selected disabled>Any Body Style</option>
+        <option>Sedan</option>
+        <option>SUV</option>
+        <option>Hatchback</option>
+        <option>Luxury</option>
+      </select>
+
+      <input type="text" name="keyword" placeholder="Search by keyword" />
+
+      <button type="submit"><i class="fas fa-search"></i> Search</button>
+    </form>
+  </div>
+</section>
+
+  <!-- Featured Cars -->
+  <section class="car-section container">
+    <h2>Browse by Style</h2>
+    <div class="car-grid">
+      <div class="car-card">
+        <img src="Images/Sedan-image.png" alt="Sedan">
+        <h3>Sedan</h3>
+      </div>
+      <div class="car-card">
+        <img src="Images/SUV-image.png" alt="SUV">
+        <h3>SUV</h3>
+      </div>
+      <div class="car-card">
+        <img src="Images/Hatchback-image.png" alt="Hatchback">
+        <h3>Hatchback</h3>
+      </div>
+      <div class="car-card">
+        <img src="Images/LuxCar-image.png" alt="Luxury">
+        <h3>Luxury</h3>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>
